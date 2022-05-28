@@ -22,12 +22,11 @@ public class Tree  {
 	}
 	
 	private void formEmptyMatrix() {
-		int depth = getTreeDepth(this.root);
-		matrixTree = new TreeNode[depth][(int) Math.pow(2, depth) - 1];
+		matrixTree = new TreeNode[treeDepth][(int) Math.pow(2, treeDepth) - 1];
 		TreeNode c1 = new TreeNode(Integer.MIN_VALUE);
 		
-		for(int i = 0; i < depth; i++) {
-			for(int j = 0; j < (int) Math.pow(2, depth) - 1; j++) {
+		for(int i = 0; i < treeDepth; i++) {
+			for(int j = 0; j < (int) Math.pow(2, treeDepth) - 1; j++) {
 				matrixTree[i][j] = c1;
 			}
 		}
@@ -39,8 +38,8 @@ public class Tree  {
 		if(i == 0) {
 			matrixTree[i][(int) ((Math.pow(2, treeDepth) - 1) / 2)] = node;
 		} else {
-			int sirinaMatrice = (int) Math.pow(2, treeDepth) - 1;
-			for(int j = 0; j < sirinaMatrice; j++) {
+			int matrixWidth = (int) Math.pow(2, treeDepth) - 1;
+			for(int j = 0; j < matrixWidth; j++) {
 				if(matrixTree[i - 1][j].leftChild == node) {
 					matrixTree[i][j - (int) Math.pow(2, level) / 2] = node; 
 					break;
@@ -83,7 +82,6 @@ public class Tree  {
 	}
 	
 	//helper functions to add elements to tree
-	
 	public void addBstArr(int... numbers) {
 		if(numbers.length == 0) {
 			System.out.println("You didn't pass any number!");
